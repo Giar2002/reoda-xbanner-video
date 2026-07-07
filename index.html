@@ -154,24 +154,7 @@
         .illustration-section img {
             max-width: 100%;
             height: auto;
-            border-radius: 20px;
             object-fit: cover;
-            /* Optional: Add a subtle shadow if the image is transparent, else it just sits nicely */
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-
-        /* Decorative circle behind the image (matches the original design's aesthetic) */
-        .bg-circle {
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: rgba(255,255,255,0.4);
-            border-radius: 50%;
-            z-index: -1;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            filter: blur(40px);
         }
 
         /* Animations */
@@ -261,7 +244,6 @@
 
             <!-- SECTION 2: Illustration Image -->
             <div class="illustration-section">
-                <div class="bg-circle"></div>
                 <img src="assets/house.png" alt="Rumah Reoda" />
             </div>
 
