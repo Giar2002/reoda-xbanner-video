@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REODA - Video Presentasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4F65B6;
+            --primary-blue-hover: #3E5199;
+            --text-dark: #2C3E50;
+            --bg-light: #EBF2FA;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            background: linear-gradient(135deg, #f0f4fa 0%, #d9e5f5 100%);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background-color: transparent;
+        }
+
+        .logo-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--primary-blue);
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(79, 101, 182, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-blue-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(79, 101, 182, 0.3);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-wrapper {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Video Section */
+        .video-section {
+            flex: 1;
+            min-width: 300px;
+            max-width: 650px;
+            background: var(--white);
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 3;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #000;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Illustration Section */
+        .illustration-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .illustration-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            object-fit: cover;
+            /* Optional: Add a subtle shadow if the image is transparent, else it just sits nicely */
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Decorative circle behind the image (matches the original design's aesthetic) */
+        .bg-circle {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(255,255,255,0.4);
+            border-radius: 50%;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(40px);
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .content-wrapper {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 3rem;
+            }
+            .video-section {
+                width: 100%;
+                max-width: 100%;
+            }
+            .illustration-section img {
+                max-width: 80%;
+            }
+        }
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 1.5rem 5%;
+            }
+            .btn-primary {
+                width: 100%;
+                justify-content: center;
+            }
+            .illustration-section img {
+                max-width: 100%;
+            }
+            .bg-circle {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-icon">
+                <!-- Reoda SVG Logo Placeholder -->
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 3L2 12H5V20H19V12H22L12 3ZM12 5.8L17 10.3V18H7V10.3L12 5.8Z" />
+                    <path d="M12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9ZM12 13.5C11.17 13.5 10.5 12.83 10.5 12C10.5 11.17 11.17 10.5 12 10.5C12.83 10.5 13.5 11.17 13.5 12C13.5 12.83 12.83 13.5 12 13.5Z" />
+                </svg>
+            </div>
+            <div class="logo-text">REODA</div>
+        </div>
+        
+        <a href="https://www.reoda.biz.id/" class="btn-primary" target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            Kunjungi Website Resmi
+        </a>
+    </header>
+
+    <main>
+        <div class="content-wrapper">
+            
+            <!-- SECTION 1: Video Player -->
+            <div class="video-section">
+                <div class="video-container">
+                    <!-- 
+                        CARA MENGGANTI VIDEO:
+                        Ganti URL di dalam atribut 'src' pada tag iframe di bawah ini.
+                        Pastikan menggunakan format embed YouTube.
+                        Contoh: "https://www.youtube.com/embed/KODE_VIDEO_ANDA"
+                    -->
+                    <iframe 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1&mute=1" 
+                        title="Video Presentasi Reoda" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- SECTION 2: Illustration Image -->
+            <div class="illustration-section">
+                <div class="bg-circle"></div>
+                <img src="assets/house.png" alt="Rumah Reoda" />
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
